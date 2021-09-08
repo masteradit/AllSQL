@@ -1,0 +1,6 @@
+include: package:lint/analysis_options.yaml
+
+linter:
+  rules:
+    prefer_relative_imports: true
+    prefer_single_quotes: true
