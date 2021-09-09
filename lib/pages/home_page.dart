@@ -27,16 +27,6 @@ class _HomePageState extends State<HomePage> {
         'Execute an SQL DELETE query and show the number of changes made.\n\nFor example:\nDELETE FROM Test WHERE name = "Adit";',
   };
 
-  final List<Map<String, dynamic>> testing = [
-    {
-      'Column1': 'Data',
-      'Column2': 'Data2',
-    },
-    {
-      'Column3': 'SomeMore',
-    },
-  ];
-
   final _commandController = TextEditingController();
 
   Widget _output = Container();
