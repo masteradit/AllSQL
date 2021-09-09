@@ -157,8 +157,6 @@ class _HomePageState extends State<HomePage> {
                   final db = await databaseFactory
                       .openDatabase(sqflite.inMemoryDatabasePath);
 
-                  print('db.isOpen: ${db.isOpen}');
-
                   switch (_commandType) {
                     case 'Execute':
                       await db.execute(_commandController.text);
@@ -221,10 +219,8 @@ class _HomePageState extends State<HomePage> {
                     default:
                   }
 
-                  print(
-                      'sqlite_master table: ${await db.rawQuery("SELECT * FROM sqlite_master;")}');
-
-                  print('Done');
+                  // print(
+                  //     'sqlite_master table: ${await db.rawQuery("SELECT * FROM sqlite_master;")}');
                 },
                 child: Row(
                   children: const [
