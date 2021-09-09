@@ -26,12 +26,12 @@ AllSQL is an open-source compact browser based SQL Compiler, built using Flutter
 
 ## ⚡ Features
 
-- Server is not required
-- Output is neatly formatted in the form of a table
-- Helper text to explain the use of each option with example
-- Very small size (< 6 MB)
-- Works on web
-- Can be installed as a Progressive Web App on Android, iOS, Windows, MacOS and Linux
+- ✅ Server is not required
+- ✅ Output is neatly formatted in the form of a table
+- ✅ Helper text to explain the use of each option with example
+- ✅ Very small size (< 6 MB)
+- ✅ Works on web
+- ✅ Can be installed as a Progressive Web App on Android, iOS, Windows, MacOS and Linux
 
 ## 🤔 Why did I make AllSQL?
 
