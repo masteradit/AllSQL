@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sqflite_common/sqlite_api.dart' as sqflite;
 import 'package:sqflite_web/sqflite_web.dart';
 
+import '../widgets/radio_button.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -246,40 +248,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-    );
-  }
-}
-
-class RadioButton extends StatelessWidget {
-  final String value;
-  final String groupValue;
-  final void Function(String? value)? onChanged;
-
-  const RadioButton({
-    Key? key,
-    required this.value,
-    required this.groupValue,
-    required this.onChanged,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Radio<String>(
-          value: value,
-          groupValue: groupValue,
-          onChanged: onChanged,
-        ),
-        InkWell(
-          onTap: () {
-            if (onChanged != null) {
-              onChanged!(value);
-            }
-          },
-          child: Text(value),
-        ),
-      ],
     );
   }
 }
