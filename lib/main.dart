@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'pages/home_page.dart';
+
 void main() {
   runApp(AllSqlApp());
 }
@@ -12,7 +14,7 @@ class AllSqlApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(),
+      home: const HomePage(),
     );
   }
 }
