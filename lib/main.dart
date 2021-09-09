@@ -12,7 +12,7 @@ class AllSqlApp extends StatelessWidget {
     return MaterialApp(
       title: 'AllSQL',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.teal,
       ),
       home: const HomePage(),
     );

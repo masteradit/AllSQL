@@ -1,5 +1,5 @@
 name: allsql
-description: A new Flutter project.
+description: AllSQL is an open-source compact browser based SQL Compiler, built using Flutter.
 
 publish_to: 'none'
 
