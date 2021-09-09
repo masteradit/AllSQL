@@ -39,6 +39,8 @@ class _HomePageState extends State<HomePage> {
 
   final _commandController = TextEditingController();
 
+  Widget _output = Container();
+
   @override
   void initState() {
     super.initState();
@@ -160,22 +162,60 @@ class _HomePageState extends State<HomePage> {
                   switch (_commandType) {
                     case 'Execute':
                       await db.execute(_commandController.text);
+                      setState(() {
+                        _output = const Text('Executed the command');
+                      });
                       break;
 
                     case 'Insert':
-                      print(await db.rawInsert(_commandController.text));
+                      final int lastRow =
+                          await db.rawInsert(_commandController.text);
+                      setState(() {
+                        _output = Text('ID of last row inserted is $lastRow.');
+                      });
                       break;
 
                     case 'Query':
-                      print(await db.rawQuery(_commandController.text));
+                      final List<Map<String, Object?>> queryOutput =
+                          await db.rawQuery(_commandController.text);
+
+                      if (queryOutput.isEmpty) {
+                        _output = const Text('No output!');
+                      } else {
+                        _output = DataTable(
+                          columns: queryOutput.first.keys
+                              .map((e) => DataColumn(
+                                    label: Text(e),
+                                  ))
+                              .toList(),
+                          rows: queryOutput
+                              .map((e) => DataRow(
+                                  cells: queryOutput.first.keys
+                                      .map((a) => DataCell(
+                                          Text(e[a]?.toString() ?? 'null')))
+                                      .toList()))
+                              .toList(),
+                        );
+                      }
+
+                      setState(() {});
+
                       break;
 
                     case 'Update':
-                      print(await db.rawUpdate(_commandController.text));
+                      final int rowsUpdated =
+                          await db.rawUpdate(_commandController.text);
+                      setState(() {
+                        _output = Text('$rowsUpdated rows deleted!');
+                      });
                       break;
 
                     case 'Delete':
-                      print(await db.rawDelete(_commandController.text));
+                      final int rowsDeleted =
+                          await db.rawDelete(_commandController.text);
+                      setState(() {
+                        _output = Text('$rowsDeleted rows deleted!');
+                      });
                       break;
 
                     default:
@@ -223,29 +263,7 @@ class _HomePageState extends State<HomePage> {
             style: Theme.of(context).textTheme.headline6,
           ),
           const SizedBox(height: 20.0),
-          DataTable(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.grey,
-              ),
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            columns: testing[0]
-                .keys
-                .map((e) => DataColumn(
-                      label: Text(e),
-                    ))
-                .toList(),
-            rows: [
-              DataRow(
-                cells: testing[0]
-                    .keys
-                    .map((e) =>
-                        DataCell(Text(testing[0][e] as String? ?? 'null')))
-                    .toList(),
-              ),
-            ],
-          ),
+          _output,
         ],
       ),
     );
