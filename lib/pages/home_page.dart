@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sqflite_common/sqlite_api.dart' as sqflite;
+import 'package:sqflite_web/sqflite_web.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -33,10 +35,18 @@ class _HomePageState extends State<HomePage> {
     },
   ];
 
+  final _commandController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
     _commandType = 'Execute';
+  }
+
+  @override
+  void dispose() {
+    _commandController.dispose();
+    super.dispose();
   }
 
   @override
@@ -49,10 +59,11 @@ class _HomePageState extends State<HomePage> {
       body: ListView(
         padding: const EdgeInsets.all(50.0),
         children: [
-          const TextField(
+          TextField(
+            controller: _commandController,
             minLines: 4,
             maxLines: 10,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               hintText: 'Enter your SQL command',
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.all(
@@ -136,7 +147,43 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.circular(15.0),
                   )),
                 ),
-                onPressed: () {},
+                onPressed: () async {
+                  final databaseFactory = databaseFactoryWeb;
+
+                  final db = await databaseFactory
+                      .openDatabase(sqflite.inMemoryDatabasePath);
+
+                  print('db.isOpen: ${db.isOpen}');
+
+                  switch (_commandType) {
+                    case 'Execute':
+                      await db.execute(_commandController.text);
+                      break;
+
+                    case 'Insert':
+                      print(await db.rawInsert(_commandController.text));
+                      break;
+
+                    case 'Query':
+                      print(await db.rawQuery(_commandController.text));
+                      break;
+
+                    case 'Update':
+                      print(await db.rawUpdate(_commandController.text));
+                      break;
+
+                    case 'Delete':
+                      print(await db.rawDelete(_commandController.text));
+                      break;
+
+                    default:
+                  }
+
+                  print(
+                      'sqlite_master table: ${await db.rawQuery("SELECT * FROM sqlite_master;")}');
+
+                  print('Done');
+                },
                 child: Row(
                   children: const [
                     Text(
