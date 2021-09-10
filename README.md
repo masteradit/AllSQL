@@ -6,7 +6,7 @@
 ![pull requests open](https://img.shields.io/github/issues-pr/masteradit/allsql)
 ![license: MIT](https://img.shields.io/github/license/masteradit/allsql)
 ![latest version](https://img.shields.io/github/v/release/masteradit/allsql)
-![Netlify Status](https://api.netlify.com/api/v1/badges/31d231ee-72ca-4f9a-84d1-7e73ef4851c1/deploy-status)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/31d231ee-72ca-4f9a-84d1-7e73ef4851c1/deploy-status)](https://sql.allmityapp.com)
 <!-- ![languages](https://img.shields.io/github/languages/count/masteradit/allsql) -->
 <!-- ![top language percentage](https://img.shields.io/github/languages/top/masteradit/allsql) -->
 <!-- ![code size](https://img.shields.io/github/languages/code-size/masteradit/allsql) -->
@@ -20,6 +20,8 @@ AllSQL is an open-source compact browser based SQL Compiler, built using Flutter
 
 ## ✨ Demo
 
+Website: https://sql.allmityapp.com
+
 ![Demo GIF](images/recording.gif)
 
 *Please ignore the mouse in the gif above. The screen recording software glitched the mouse position.*
@@ -32,6 +34,7 @@ AllSQL is an open-source compact browser based SQL Compiler, built using Flutter
 - ✅ Very small size (< 6 MB)
 - ✅ Works on web
 - ✅ Can be installed as a Progressive Web App on Android, iOS, Windows, MacOS and Linux
+- ✅ Works offline
 
 ## 🐛 Known issues/bugs
 
