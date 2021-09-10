@@ -70,7 +70,7 @@ Coming soon!
 
 Please ⭐️ this repository if this project helped you!
 
-<a href="https://www.buymeacoffee.com/aditluhadia" target="blank"><img src="./images/bmc-button.png" alt="Buy me a coffee" height="45" /></a>
+<a href="https://www.buymeacoffee.com/aditluhadia" target="blank"><img src="https://github.com/masteradit/AllSQL/raw/master/images/bmc-button.png" alt="Buy me a coffee" height="45" /></a>
 
 ## 👥 Contributors
 
