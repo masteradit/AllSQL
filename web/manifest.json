@@ -6,7 +6,7 @@
     "background_color": "#009688",
     "theme_color": "#009688",
     "description": "AllSQL is an open-source compact browser based SQL Compiler, built using Flutter.",
-    "orientation": "portrait-primary",
+    "orientation": "any",
     "prefer_related_applications": false,
     "icons": [
         {
