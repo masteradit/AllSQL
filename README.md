@@ -22,7 +22,7 @@ AllSQL is an open-source compact browser based SQL Compiler, built using Flutter
 
 Website: https://sql.allmityapp.com
 
-![Demo GIF](images/recording.gif)
+![Demo GIF](https://github.com/masteradit/AllSQL/raw/master/images/recording.gif)
 
 *Please ignore the mouse in the gif above. The screen recording software glitched the mouse position.*
 
