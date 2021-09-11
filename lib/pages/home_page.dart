@@ -1,3 +1,4 @@
+import 'package:allsql/global.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite_common/sqlite_api.dart' as sqflite;
 import 'package:sqflite_web/sqflite_web.dart';
@@ -46,9 +47,39 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: isDark ? const Color(0xFF463838) : Colors.white,
       appBar: AppBar(
         centerTitle: true,
         title: const Text('AllSQL'),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+              width: 250,
+              child: ListTile(
+                title: const Text(
+                  'Dark Theme',
+                  style: TextStyle(
+                      fontSize: 17.0,
+                      color: Colors.white,
+                      fontWeight: FontWeight.normal),
+                ),
+                leading: Icon(
+                  Icons.brightness_6,
+                  color: isDark ? Colors.white : Colors.black,
+                ),
+                trailing: Switch(
+                    activeColor: Colors.white,
+                    value: isDark,
+                    onChanged: (value) {
+                      setState(() {
+                        isDark = !isDark;
+                      });
+                    }),
+              ),
+            ),
+          ),
+        ],
       ),
       body: ListView(
         padding: const EdgeInsets.all(50.0),
@@ -57,10 +88,17 @@ class _HomePageState extends State<HomePage> {
             controller: _commandController,
             minLines: 4,
             maxLines: 10,
-            decoration: const InputDecoration(
+            style: TextStyle(
+                fontSize: 18.0, color: isDark ? Colors.white : Colors.black),
+            decoration: InputDecoration(
               hintText: 'Enter your SQL command',
+              hintStyle: TextStyle(
+                  fontSize: 18.0, color: isDark ? Colors.white : Colors.black),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(
+                borderSide: BorderSide(
+                  color: isDark ? const Color(0xff0665B1) : Colors.teal,
+                ),
+                borderRadius: const BorderRadius.all(
                   Radius.circular(15.0),
                 ),
               ),
@@ -151,7 +189,13 @@ class _HomePageState extends State<HomePage> {
                     case 'Execute':
                       await db.execute(_commandController.text);
                       setState(() {
-                        _output = const Text('Executed the command');
+                        _output = Text(
+                          'Query Excecuted',
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            color: isDark ? Colors.white : Colors.black,
+                          ),
+                        );
                       });
                       break;
 
@@ -159,7 +203,13 @@ class _HomePageState extends State<HomePage> {
                       final int lastRow =
                           await db.rawInsert(_commandController.text);
                       setState(() {
-                        _output = Text('ID of last row inserted is $lastRow.');
+                        _output = Text(
+                          'ID of last row inserted is $lastRow.',
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            color: isDark ? Colors.white : Colors.black,
+                          ),
+                        );
                       });
                       break;
 
@@ -168,19 +218,40 @@ class _HomePageState extends State<HomePage> {
                           await db.rawQuery(_commandController.text);
 
                       if (queryOutput.isEmpty) {
-                        _output = const Text('No output!');
+                        _output = Text(
+                          'No output!',
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            color: isDark ? Colors.white : Colors.black,
+                          ),
+                        );
                       } else {
                         _output = DataTable(
                           columns: queryOutput.first.keys
                               .map((e) => DataColumn(
-                                    label: Text(e),
+                                    label: Text(
+                                      e,
+                                      style: TextStyle(
+                                        fontSize: 18.0,
+                                        color: isDark
+                                            ? Colors.white
+                                            : Colors.black,
+                                      ),
+                                    ),
                                   ))
                               .toList(),
                           rows: queryOutput
                               .map((e) => DataRow(
                                   cells: queryOutput.first.keys
-                                      .map((a) => DataCell(
-                                          Text(e[a]?.toString() ?? 'null')))
+                                      .map((a) => DataCell(Text(
+                                            e[a]?.toString() ?? 'null',
+                                            style: TextStyle(
+                                              fontSize: 18.0,
+                                              color: isDark
+                                                  ? Colors.white
+                                                  : Colors.black,
+                                            ),
+                                          )))
                                       .toList()))
                               .toList(),
                         );
@@ -194,7 +265,12 @@ class _HomePageState extends State<HomePage> {
                       final int rowsUpdated =
                           await db.rawUpdate(_commandController.text);
                       setState(() {
-                        _output = Text('$rowsUpdated rows deleted!');
+                        _output = Text(
+                          '$rowsUpdated rows updated!',
+                          style: TextStyle(
+                            color: isDark ? Colors.white : Colors.black,
+                          ),
+                        );
                       });
                       break;
 
@@ -202,7 +278,12 @@ class _HomePageState extends State<HomePage> {
                       final int rowsDeleted =
                           await db.rawDelete(_commandController.text);
                       setState(() {
-                        _output = Text('$rowsDeleted rows deleted!');
+                        _output = Text(
+                          '$rowsDeleted rows deleted!',
+                          style: TextStyle(
+                            color: isDark ? Colors.white : Colors.black,
+                          ),
+                        );
                       });
                       break;
 
@@ -236,7 +317,7 @@ class _HomePageState extends State<HomePage> {
               color: Colors.grey.shade300,
               borderRadius: BorderRadius.circular(15.0),
             ),
-            child: Text(
+            child: SelectableText(
               _descriptions[_commandType] ?? 'Error!',
               style: TextStyle(
                 color: Colors.grey.shade600,
@@ -246,7 +327,10 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(height: 20.0),
           Text(
             'OUTPUT',
-            style: Theme.of(context).textTheme.headline6,
+            style: TextStyle(
+              fontSize: 20.0,
+              color: isDark ? Colors.white : Colors.black,
+            ),
           ),
           const SizedBox(height: 20.0),
           _output,

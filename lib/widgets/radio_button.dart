@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../global.dart';
+
 class RadioButton extends StatelessWidget {
   final String value;
   final String groupValue;
@@ -27,7 +29,9 @@ class RadioButton extends StatelessWidget {
               onChanged!(value);
             }
           },
-          child: Text(value),
+          child: Text(value,
+              style: TextStyle(
+                  fontSize: 16, color: isDark ? Colors.white : Colors.black)),
         ),
       ],
     );
