@@ -236,7 +236,7 @@ class _HomePageState extends State<HomePage> {
               color: Colors.grey.shade300,
               borderRadius: BorderRadius.circular(15.0),
             ),
-            child: Text(
+            child: SelectableText(
               _descriptions[_commandType] ?? 'Error!',
               style: TextStyle(
                 color: Colors.grey.shade600,
