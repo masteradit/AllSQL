@@ -64,7 +64,8 @@ samples, guidance on mobile development, and a full API reference.
 
 ## 📚 Documentation
 
-Coming soon!
+Website: https://docs.sql.allmityapp.com/
+GitHub repository: https://github.com/masteradit/AllSQL-Docs
 
 ## 🙏 Show your support
 
