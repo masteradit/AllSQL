@@ -84,6 +84,14 @@ Please ⭐️ this repository if this project helped you!
 
 Made with [contributors-img](https://contrib.rocks).
 
+<!-- ## Contributors over time
+
+![Contributors over time](https://contributor-graph-api.apiseven.com/contributors-svg?chart=contributorOverTime&repo=masteradit/AllSQL) -->
+
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/masteradit/AllSQL.svg)](https://starchart.cc/masteradit/AllSQL)
+
 ## 📝 License
 
 Copyright © 2021 [Adit Luhadia](https://github.com/masteradit).
