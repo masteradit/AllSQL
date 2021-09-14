@@ -1,20 +1,23 @@
 # AllSQL - An open-source compact browser based SQL Compiler
 
 ![style: lint](https://img.shields.io/badge/style-lint-4BC0F5.svg)
-![repo size](https://img.shields.io/github/repo-size/masteradit/allsql)
-![issues open](https://img.shields.io/github/issues/masteradit/allsql)
-![pull requests open](https://img.shields.io/github/issues-pr/masteradit/allsql)
-![license: MIT](https://img.shields.io/github/license/masteradit/allsql)
-![latest version](https://img.shields.io/github/v/release/masteradit/allsql)
+![repo size](https://img.shields.io/github/repo-size/masteradit/AllSQL)
+![issues open](https://img.shields.io/github/issues/masteradit/AllSQL)
+![pull requests open](https://img.shields.io/github/issues-pr/masteradit/AllSQL)
+![license: MIT](https://img.shields.io/github/license/masteradit/AllSQL)
+![latest version](https://img.shields.io/github/v/release/masteradit/AllSQL)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/31d231ee-72ca-4f9a-84d1-7e73ef4851c1/deploy-status)](https://sql.allmityapp.com)
-<!-- ![languages](https://img.shields.io/github/languages/count/masteradit/allsql) -->
-<!-- ![top language percentage](https://img.shields.io/github/languages/top/masteradit/allsql) -->
-<!-- ![code size](https://img.shields.io/github/languages/code-size/masteradit/allsql) -->
-<!-- ![issues closed](https://img.shields.io/github/issues-closed/masteradit/allsql) -->
-<!-- ![pull requests closed](https://img.shields.io/github/issues-pr-closed/masteradit/allsql) -->
-<!-- ![commit activity](https://img.shields.io/github/commit-activity/m/masteradit/allsql) -->
-<!-- ![contributors](https://img.shields.io/github/contributors/masteradit/allsql) -->
-<!-- ![last commit](https://img.shields.io/github/last-commit/masteradit/allsql) -->
+![contributors](https://img.shields.io/github/contributors/masteradit/AllSQL)
+![watchers](https://badgen.net/github/watchers/masteradit/AllSQL)
+![stars](https://badgen.net/github/stars/masteradit/AllSQL)
+![forks](https://badgen.net/github/forks/masteradit/AllSQL)
+<!-- ![languages](https://img.shields.io/github/languages/count/masteradit/AllSQL) -->
+<!-- ![top language percentage](https://img.shields.io/github/languages/top/masteradit/AllSQL) -->
+<!-- ![code size](https://img.shields.io/github/languages/code-size/masteradit/AllSQL) -->
+<!-- ![issues closed](https://img.shields.io/github/issues-closed/masteradit/AllSQL) -->
+<!-- ![pull requests closed](https://img.shields.io/github/issues-pr-closed/masteradit/AllSQL) -->
+<!-- ![commit activity](https://img.shields.io/github/commit-activity/m/masteradit/AllSQL) -->
+<!-- ![last commit](https://img.shields.io/github/last-commit/masteradit/AllSQL) -->
 
 AllSQL is an open-source compact browser based SQL Compiler, built using Flutter. Please create an issue on GitHub if you find a bug or have a feature request. Feel free to create pull requests if you are interested in contributing to this project.
 
@@ -64,8 +67,8 @@ samples, guidance on mobile development, and a full API reference.
 
 ## 📚 Documentation
 
-Website: https://docs.sql.allmityapp.com/
-GitHub repository: https://github.com/masteradit/AllSQL-Docs
+- Website: https://docs.sql.allmityapp.com/
+- GitHub repository: https://github.com/masteradit/AllSQL-Docs
 
 ## 🙏 Show your support
 
@@ -75,14 +78,22 @@ Please ⭐️ this repository if this project helped you!
 
 ## 👥 Contributors
 
-<a href="https://github.com/masteradit/allsql/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=masteradit/allsql" />
+<a href="https://github.com/masteradit/AllSQL/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=masteradit/AllSQL" />
 </a>
 
 Made with [contributors-img](https://contrib.rocks).
+
+<!-- ## Contributors over time
+
+![Contributors over time](https://contributor-graph-api.apiseven.com/contributors-svg?chart=contributorOverTime&repo=masteradit/AllSQL) -->
+
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/masteradit/AllSQL.svg)](https://starchart.cc/masteradit/AllSQL)
 
 ## 📝 License
 
 Copyright © 2021 [Adit Luhadia](https://github.com/masteradit).
 
-This project is [MIT](https://github.com/masteradit/allsql/blob/master/LICENSE) licensed.
+This project is [MIT](https://github.com/masteradit/AllSQL/blob/master/LICENSE) licensed.

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
 import 'pages/home_page.dart';
 
 void main() {
+  setUrlStrategy(PathUrlStrategy());
   runApp(AllSqlApp());
 }
 
