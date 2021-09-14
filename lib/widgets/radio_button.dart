@@ -29,9 +29,13 @@ class RadioButton extends StatelessWidget {
               onChanged!(value);
             }
           },
-          child: Text(value,
-              style: TextStyle(
-                  fontSize: 16, color: isDark ? Colors.white : Colors.black)),
+          child: Text(
+            value,
+            // style: TextStyle(
+            //   fontSize: 16,
+            //   color: isDark ? Colors.white : Colors.black,
+            // ),
+          ),
         ),
       ],
     );

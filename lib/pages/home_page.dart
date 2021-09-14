@@ -1,8 +1,8 @@
-import 'package:allsql/global.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite_common/sqlite_api.dart' as sqflite;
 import 'package:sqflite_web/sqflite_web.dart';
 
+import '../global.dart';
 import '../widgets/radio_button.dart';
 
 class HomePage extends StatefulWidget {
@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: isDark ? const Color(0xFF463838) : Colors.white,
+      // backgroundColor:
       appBar: AppBar(
         centerTitle: true,
         title: const Text('AllSQL'),
@@ -64,16 +64,18 @@ class _HomePageState extends State<HomePage> {
                       color: Colors.white,
                       fontWeight: FontWeight.normal),
                 ),
-                leading: Icon(
+                leading: const Icon(
                   Icons.brightness_6,
-                  color: isDark ? Colors.white : Colors.black,
+                  // color:
                 ),
                 trailing: Switch(
-                    activeColor: Colors.white,
-                    value: isDark,
+                    // activeColor: Colors.white,
+                    value: themeVariable == ThemeMode.dark,
                     onChanged: (value) {
                       setState(() {
-                        isDark = !isDark;
+                        themeVariable = themeVariable == ThemeMode.dark
+                            ? ThemeMode.light
+                            : ThemeMode.dark;
                       });
                     }),
               ),
@@ -89,15 +91,19 @@ class _HomePageState extends State<HomePage> {
             minLines: 4,
             maxLines: 10,
             style: TextStyle(
-                fontSize: 18.0, color: isDark ? Colors.white : Colors.black),
+              fontSize: 18.0,
+              // color:
+            ),
             decoration: InputDecoration(
               hintText: 'Enter your SQL command',
               hintStyle: TextStyle(
-                  fontSize: 18.0, color: isDark ? Colors.white : Colors.black),
+                fontSize: 18.0,
+                // color:
+              ),
               border: OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: isDark ? const Color(0xff0665B1) : Colors.teal,
-                ),
+                    // color:
+                    ),
                 borderRadius: const BorderRadius.all(
                   Radius.circular(15.0),
                 ),
@@ -193,7 +199,7 @@ class _HomePageState extends State<HomePage> {
                           'Query Excecuted',
                           style: TextStyle(
                             fontSize: 18.0,
-                            color: isDark ? Colors.white : Colors.black,
+                            // color:
                           ),
                         );
                       });
@@ -207,7 +213,7 @@ class _HomePageState extends State<HomePage> {
                           'ID of last row inserted is $lastRow.',
                           style: TextStyle(
                             fontSize: 18.0,
-                            color: isDark ? Colors.white : Colors.black,
+                            // color:
                           ),
                         );
                       });
@@ -222,7 +228,7 @@ class _HomePageState extends State<HomePage> {
                           'No output!',
                           style: TextStyle(
                             fontSize: 18.0,
-                            color: isDark ? Colors.white : Colors.black,
+                            // color:
                           ),
                         );
                       } else {
@@ -233,9 +239,9 @@ class _HomePageState extends State<HomePage> {
                                       e,
                                       style: TextStyle(
                                         fontSize: 18.0,
-                                        color: isDark
-                                            ? Colors.white
-                                            : Colors.black,
+                                        // color:
+                                        //     ? Colors.white
+                                        //     : Colors.black,
                                       ),
                                     ),
                                   ))
@@ -247,9 +253,9 @@ class _HomePageState extends State<HomePage> {
                                             e[a]?.toString() ?? 'null',
                                             style: TextStyle(
                                               fontSize: 18.0,
-                                              color: isDark
-                                                  ? Colors.white
-                                                  : Colors.black,
+                                              // color:
+                                              //     ? Colors.white
+                                              //     : Colors.black,
                                             ),
                                           )))
                                       .toList()))
@@ -267,9 +273,9 @@ class _HomePageState extends State<HomePage> {
                       setState(() {
                         _output = Text(
                           '$rowsUpdated rows updated!',
-                          style: TextStyle(
-                            color: isDark ? Colors.white : Colors.black,
-                          ),
+                          // style: TextStyle(
+                          //   color:
+                          // ),
                         );
                       });
                       break;
@@ -280,9 +286,9 @@ class _HomePageState extends State<HomePage> {
                       setState(() {
                         _output = Text(
                           '$rowsDeleted rows deleted!',
-                          style: TextStyle(
-                            color: isDark ? Colors.white : Colors.black,
-                          ),
+                          // style: TextStyle(
+                          //   color:
+                          // ),
                         );
                       });
                       break;
@@ -327,10 +333,10 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(height: 20.0),
           Text(
             'OUTPUT',
-            style: TextStyle(
-              fontSize: 20.0,
-              color: isDark ? Colors.white : Colors.black,
-            ),
+            // style: TextStyle(
+            //   fontSize: 20.0,
+            //   color:
+            // ),
           ),
           const SizedBox(height: 20.0),
           _output,
