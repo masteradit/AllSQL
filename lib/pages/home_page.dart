@@ -1,7 +1,9 @@
+import 'package:allsql/config.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite_common/sqlite_api.dart' as sqflite;
 import 'package:sqflite_web/sqflite_web.dart';
 
+import '../global.dart';
 import '../widgets/radio_button.dart';
 
 class HomePage extends StatefulWidget {
@@ -46,9 +48,24 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // backgroundColor:
       appBar: AppBar(
         centerTitle: true,
         title: const Text('AllSQL'),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+              width: 250,
+              child: IconButton(
+                icon: const Icon(Icons.light_mode_outlined),
+                onPressed: () {
+                  currentTheme.switchTheme();
+                },
+              ),
+            ),
+          ),
+        ],
       ),
       body: ListView(
         padding: const EdgeInsets.all(50.0),
@@ -57,8 +74,16 @@ class _HomePageState extends State<HomePage> {
             controller: _commandController,
             minLines: 4,
             maxLines: 10,
+            style: const TextStyle(
+              fontSize: 18.0,
+              // color:
+            ),
             decoration: const InputDecoration(
               hintText: 'Enter your SQL command',
+              hintStyle: TextStyle(
+                fontSize: 18.0,
+                // color:
+              ),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.all(
                   Radius.circular(15.0),
@@ -151,7 +176,13 @@ class _HomePageState extends State<HomePage> {
                     case 'Execute':
                       await db.execute(_commandController.text);
                       setState(() {
-                        _output = const Text('Executed the command');
+                        _output = const Text(
+                          'Query Excecuted',
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            // color:
+                          ),
+                        );
                       });
                       break;
 
@@ -159,7 +190,13 @@ class _HomePageState extends State<HomePage> {
                       final int lastRow =
                           await db.rawInsert(_commandController.text);
                       setState(() {
-                        _output = Text('ID of last row inserted is $lastRow.');
+                        _output = Text(
+                          'ID of last row inserted is $lastRow.',
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            // color:
+                          ),
+                        );
                       });
                       break;
 
@@ -168,19 +205,40 @@ class _HomePageState extends State<HomePage> {
                           await db.rawQuery(_commandController.text);
 
                       if (queryOutput.isEmpty) {
-                        _output = const Text('No output!');
+                        _output = Text(
+                          'No output!',
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            // color:
+                          ),
+                        );
                       } else {
                         _output = DataTable(
                           columns: queryOutput.first.keys
                               .map((e) => DataColumn(
-                                    label: Text(e),
+                                    label: Text(
+                                      e,
+                                      style: TextStyle(
+                                        fontSize: 18.0,
+                                        // color:
+                                        //     ? Colors.white
+                                        //     : Colors.black,
+                                      ),
+                                    ),
                                   ))
                               .toList(),
                           rows: queryOutput
                               .map((e) => DataRow(
                                   cells: queryOutput.first.keys
-                                      .map((a) => DataCell(
-                                          Text(e[a]?.toString() ?? 'null')))
+                                      .map((a) => DataCell(Text(
+                                            e[a]?.toString() ?? 'null',
+                                            style: TextStyle(
+                                              fontSize: 18.0,
+                                              // color:
+                                              //     ? Colors.white
+                                              //     : Colors.black,
+                                            ),
+                                          )))
                                       .toList()))
                               .toList(),
                         );
@@ -194,7 +252,12 @@ class _HomePageState extends State<HomePage> {
                       final int rowsUpdated =
                           await db.rawUpdate(_commandController.text);
                       setState(() {
-                        _output = Text('$rowsUpdated rows deleted!');
+                        _output = Text(
+                          '$rowsUpdated rows updated!',
+                          // style: TextStyle(
+                          //   color:
+                          // ),
+                        );
                       });
                       break;
 
@@ -202,7 +265,12 @@ class _HomePageState extends State<HomePage> {
                       final int rowsDeleted =
                           await db.rawDelete(_commandController.text);
                       setState(() {
-                        _output = Text('$rowsDeleted rows deleted!');
+                        _output = Text(
+                          '$rowsDeleted rows deleted!',
+                          // style: TextStyle(
+                          //   color:
+                          // ),
+                        );
                       });
                       break;
 
@@ -246,7 +314,10 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(height: 20.0),
           Text(
             'OUTPUT',
-            style: Theme.of(context).textTheme.headline6,
+            // style: TextStyle(
+            //   fontSize: 20.0,
+            //   color:
+            // ),
           ),
           const SizedBox(height: 20.0),
           _output,
