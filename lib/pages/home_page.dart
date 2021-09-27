@@ -1,3 +1,4 @@
+import 'package:allsql/config.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite_common/sqlite_api.dart' as sqflite;
 import 'package:sqflite_web/sqflite_web.dart';
@@ -56,28 +57,11 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.all(8.0),
             child: SizedBox(
               width: 250,
-              child: ListTile(
-                title: const Text(
-                  'Dark Theme',
-                  style: TextStyle(
-                      fontSize: 17.0,
-                      color: Colors.white,
-                      fontWeight: FontWeight.normal),
-                ),
-                leading: const Icon(
-                  Icons.brightness_6,
-                  // color:
-                ),
-                trailing: Switch(
-                    // activeColor: Colors.white,
-                    value: themeVariable == ThemeMode.dark,
-                    onChanged: (value) {
-                      setState(() {
-                        themeVariable = themeVariable == ThemeMode.dark
-                            ? ThemeMode.light
-                            : ThemeMode.dark;
-                      });
-                    }),
+              child: IconButton(
+                icon: const Icon(Icons.light_mode_outlined),
+                onPressed: () {
+                  currentTheme.switchTheme();
+                },
               ),
             ),
           ),
@@ -90,21 +74,18 @@ class _HomePageState extends State<HomePage> {
             controller: _commandController,
             minLines: 4,
             maxLines: 10,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 18.0,
               // color:
             ),
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               hintText: 'Enter your SQL command',
               hintStyle: TextStyle(
                 fontSize: 18.0,
                 // color:
               ),
               border: OutlineInputBorder(
-                borderSide: BorderSide(
-                    // color:
-                    ),
-                borderRadius: const BorderRadius.all(
+                borderRadius: BorderRadius.all(
                   Radius.circular(15.0),
                 ),
               ),
@@ -195,7 +176,7 @@ class _HomePageState extends State<HomePage> {
                     case 'Execute':
                       await db.execute(_commandController.text);
                       setState(() {
-                        _output = Text(
+                        _output = const Text(
                           'Query Excecuted',
                           style: TextStyle(
                             fontSize: 18.0,

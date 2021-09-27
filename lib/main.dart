@@ -1,3 +1,4 @@
+import 'package:allsql/config.dart';
 import 'package:flutter/material.dart';
 
 import 'global.dart';
@@ -7,7 +8,20 @@ void main() {
   runApp(AllSqlApp());
 }
 
-class AllSqlApp extends StatelessWidget {
+class AllSqlApp extends StatefulWidget {
+  @override
+  State<AllSqlApp> createState() => _AllSqlAppState();
+}
+
+class _AllSqlAppState extends State<AllSqlApp> {
+  @override
+  void initState() {
+    super.initState();
+    currentTheme.addListener(() {
+      setState(() {});
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,7 +30,7 @@ class AllSqlApp extends StatelessWidget {
         primarySwatch: Colors.teal,
         brightness: Brightness.dark,
       ),
-      themeMode: themeVariable,
+      themeMode: currentTheme.currentTheme(),
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
