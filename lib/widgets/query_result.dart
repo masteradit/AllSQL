@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 Widget buildQueryResult(List<List<Map<String, Object?>>> results,
@@ -18,9 +20,11 @@ Widget buildQueryResult(List<List<Map<String, Object?>>> results,
           .toList(),
     );
   }
+  final int tableLength = results.map((e) => e.length).reduce(max);
   return Center(
+    // ignore: sized_box_for_whitespace
     child: Container(
-      height: 300,
+      height: (tableLength + 2) * 50,
       child: DefaultTabController(
         length: results.length,
         child: Scaffold(
@@ -36,7 +40,7 @@ Widget buildQueryResult(List<List<Map<String, Object?>>> results,
                 tabs: List<Widget>.generate(
                   results.length,
                   (int index) {
-                    return Tab(text: 'Query ${index+1}');
+                    return Tab(text: 'Query ${index + 1}');
                   },
                 )),
           ),
@@ -54,7 +58,8 @@ Widget buildQueryResult(List<List<Map<String, Object?>>> results,
                   rows: queryOutput
                       .map((e) => DataRow(
                           cells: queryOutput.first.keys
-                              .map((a) => DataCell(Text(e[a]?.toString() ?? 'null')))
+                              .map((a) =>
+                                  DataCell(Text(e[a]?.toString() ?? 'null')))
                               .toList()))
                       .toList(),
                 );
