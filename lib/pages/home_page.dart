@@ -1,7 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite_common/sqlite_api.dart' as sqflite;
 import 'package:sqflite_web/sqflite_web.dart';
 
+import '../widgets/query_result.dart';
 import '../widgets/radio_button.dart';
 
 class HomePage extends StatefulWidget {
@@ -45,6 +47,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final Color canvasColor = Theme.of(context).canvasColor;
+    final Color indicatorColor = Theme.of(context).indicatorColor;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -164,27 +168,21 @@ class _HomePageState extends State<HomePage> {
                       break;
 
                     case 'Query':
-                      final List<Map<String, Object?>> queryOutput =
-                          await db.rawQuery(_commandController.text);
+                      final List<String> queries = _commandController.text
+                          .replaceAll('\n', '')
+                          .split(';')
+                          .where((s) => s.isNotEmpty)
+                          .toList();
 
-                      if (queryOutput.isEmpty) {
-                        _output = const Text('No output!');
-                      } else {
-                        _output = DataTable(
-                          columns: queryOutput.first.keys
-                              .map((e) => DataColumn(
-                                    label: Text(e),
-                                  ))
-                              .toList(),
-                          rows: queryOutput
-                              .map((e) => DataRow(
-                                  cells: queryOutput.first.keys
-                                      .map((a) => DataCell(
-                                          Text(e[a]?.toString() ?? 'null')))
-                                      .toList()))
-                              .toList(),
-                        );
+                      final List<List<Map<String, Object?>>> results = [];
+                      for (final query in queries) {
+                        final List<Map<String, Object?>> queryOutput =
+                            await db.rawQuery(query);
+                        results.addAll([queryOutput]);
                       }
+                      
+                      _output = buildQueryResult(
+                          results, canvasColor, indicatorColor);
 
                       setState(() {});
 
