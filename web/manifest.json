@@ -1,11 +1,11 @@
 {
-    "name": "AllSQL - An open-source compact browser based SQL Compiler",
+    "name": "AllSQL - An open-source compact browser-based SQL Compiler",
     "short_name": "AllSQL",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#009688",
     "theme_color": "#009688",
-    "description": "AllSQL is an open-source compact browser based SQL Compiler, built using Flutter.",
+    "description": "AllSQL is an open-source compact browser-based SQL Compiler, built using Flutter.",
     "orientation": "any",
     "prefer_related_applications": false,
     "icons": [

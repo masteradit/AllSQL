@@ -1,27 +1,22 @@
 name: allsql
-description: AllSQL is an open-source compact browser based SQL Compiler, built using Flutter.
+description: AllSQL is an open-source compact browser-based SQL Compiler, built using Flutter.
 
 publish_to: 'none'
 
-version: 1.2.0+3
+version: 1.3.0+4
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: '>=3.3.1 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_web_plugins:
-    sdk: flutter
-  sqflite_web:
-    git:
-      url: https://github.com/deakjahn/sqflite_web.git
-      ref: master
+  sqflite_common_ffi_web: ^0.4.2+3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  lint: ^1.5.3
+  lint: ^2.3.0
 
 flutter:
 
