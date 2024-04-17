@@ -1,6 +1,8 @@
-include: package:lint/analysis_options.yaml
+include: package:lint/strict.yaml
 
 linter:
   rules:
+    always_use_package_imports: false
     prefer_relative_imports: true
     prefer_single_quotes: true
+    avoid_classes_with_only_static_members: false
