@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'pages/home_page.dart';
+import 'services/database_service.dart';
 
 void main() {
   runApp(const AllSqlApp());
+  DatabaseService().init();
 }
 
 class AllSqlApp extends StatelessWidget {

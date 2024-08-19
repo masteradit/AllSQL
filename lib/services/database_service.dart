@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_dynamic_calls, prefer_typing_uninitialized_variables
 
 import 'package:flutter/foundation.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
 
 /// A service class to interact with the database.
@@ -11,16 +12,18 @@ class DatabaseService {
   late final _factory;
   late final _db;
 
-  DatabaseService() {
-    _init();
-  }
+  DatabaseService();
 
   /// Initializes the database connection.
   ///
   /// This method sets the database factory to `databaseFactoryFfiWeb` and opens the database.
   /// It returns a `Future` that completes when the initialization is done.
-  Future<void> _init() async {
-    _factory = databaseFactoryFfiWeb;
+  Future<void> init() async {
+    if (kIsWeb) {
+      _factory = databaseFactoryFfiWeb;
+    } else {
+      _factory = databaseFactoryFfi;
+    }
     await _openDatabase();
   }
 
